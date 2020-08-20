@@ -14,21 +14,22 @@ const App = () => {
   });
 
   const [input, setInput] = useState('');
-  const [box, setBox] = useState({});
 
-  const calcBoxBoundaries = (response) => {
-    const boxData =
-      response.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('scanned');
+  const [boxes, setBoxes] = useState([]);
+
+  const calcBoxesBoundaries = (response) => {
+    const boxesData = response.outputs[0].data.regions;
+    const image = document.getElementById('to-scan');
     const imgWidth = image.width;
     const imgHeight = image.height;
-    const newBox = {
-      leftCol: boxData.left_col * imgWidth,
-      topRow: boxData.top_row * imgHeight,
-      rightCol: imgWidth - boxData.right_col * imgWidth,
-      bottomRow: imgHeight - boxData.bottom_row * imgHeight,
-    };
-    setBox(newBox);
+    const newBoxes = boxesData.map((box) => ({
+      leftCol: box.region_info.bounding_box.left_col * imgWidth,
+      topRow: box.region_info.bounding_box.top_row * imgHeight,
+      rightCol: imgWidth - box.region_info.bounding_box.right_col * imgWidth,
+      bottomRow:
+        imgHeight - box.region_info.bounding_box.bottom_row * imgHeight,
+    }));
+    setBoxes(newBoxes);
   };
 
   const handleInputChange = (event) => {
@@ -38,7 +39,7 @@ const App = () => {
   const handleScan = () => {
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, input)
-      .then((response) => calcBoxBoundaries(response))
+      .then((response) => calcBoxesBoundaries(response))
       .catch((err) => console.log(err));
   };
 
@@ -66,7 +67,7 @@ const App = () => {
         handleInputChange={handleInputChange}
         handleScan={handleScan}
       />
-      <FaceRec box={box} image={input} />
+      <FaceRec boxes={boxes} image={input} />
     </div>
   );
 };
