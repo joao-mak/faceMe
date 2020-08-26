@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Navigation = (props) => {
+  const { handleUserChange } = props;
   return (
     <nav className="navigation">
-      <a className="nav-link" href="https://www.facebook.com">
+      <p onClick={() => handleUserChange()} className="nav-link">
         sign out
-      </a>
+      </p>
     </nav>
   );
 };

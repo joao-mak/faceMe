@@ -4,7 +4,7 @@ const ImageLinkForm = (props) => {
   const { handleInputChange, handleScan } = props;
   return (
     <div className="image-form">
-      <p>{`Select a picture for me to scan.`}</p>
+      <p>{`Enter a picture for me to scan.`}</p>
       <div className="input-box">
         <input
           className="text-input"

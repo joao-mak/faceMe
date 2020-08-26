@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import SignIn from './components/SignIn/SignIn';
 import Logo from './components/Logo';
 import Navigation from './components/Navigation';
 import ImageLinkForm from './components/ImageLinkForm';
@@ -17,6 +18,8 @@ const App = () => {
 
   const [boxes, setBoxes] = useState([]);
 
+  const [user, setUser] = useState(null);
+
   const calcBoxesBoundaries = (response) => {
     const boxesData = response.outputs[0].data.regions;
     const image = document.getElementById('to-scan');
@@ -30,6 +33,10 @@ const App = () => {
         imgHeight - box.region_info.bounding_box.bottom_row * imgHeight,
     }));
     setBoxes(newBoxes);
+  };
+
+  const handleUserChange = (user) => {
+    setUser(user);
   };
 
   const handleInputChange = (event) => {
@@ -57,17 +64,26 @@ const App = () => {
 
   return (
     <div className="App">
-      <Particles className="particles" params={particlesParams} />
-      <header>
-        <Logo />
-        <Navigation />
-      </header>
-      <Rank />
-      <ImageLinkForm
-        handleInputChange={handleInputChange}
-        handleScan={handleScan}
-      />
-      <FaceRec boxes={boxes} image={input} />
+      {!user ? (
+        <>
+          <SignIn handleUserChange={handleUserChange} />
+          <Particles className="particles" params={particlesParams} />
+        </>
+      ) : (
+        <>
+          <Particles className="particles" params={particlesParams} />
+          <header>
+            <Logo size={100} />
+            <Navigation handleUserChange={handleUserChange} />
+          </header>
+          <Rank />
+          <ImageLinkForm
+            handleInputChange={handleInputChange}
+            handleScan={handleScan}
+          />
+          <FaceRec boxes={boxes} image={input} />
+        </>
+      )}
     </div>
   );
 };
