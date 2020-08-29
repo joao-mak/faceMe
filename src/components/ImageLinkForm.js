@@ -12,7 +12,7 @@ const ImageLinkForm = (props) => {
           onChange={handleInputChange}
         />
         <button className="scan-button" onClick={handleScan}>
-          scan!
+          {`scan!`}
         </button>
       </div>
     </div>

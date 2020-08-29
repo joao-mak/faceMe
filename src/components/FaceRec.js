@@ -14,6 +14,7 @@ const FaceRec = (props) => {
       />
       {boxes.map((box) => (
         <div
+          key={boxes.indexOf(box)}
           className="bounding_box"
           style={{
             top: box.topRow,

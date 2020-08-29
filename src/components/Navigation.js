@@ -5,7 +5,7 @@ const Navigation = (props) => {
   return (
     <nav className="navigation">
       <p onClick={() => handleUserChange()} className="nav-link">
-        sign out
+        {`sign out`}
       </p>
     </nav>
   );

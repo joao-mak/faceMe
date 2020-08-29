@@ -46,7 +46,20 @@ const App = () => {
   const handleScan = () => {
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, input)
-      .then((response) => calcBoxesBoundaries(response))
+      .then((response) => {
+        if (response) {
+          fetch('http://localhost:3001/image', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: user.id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((count) => setUser({ ...user, entries: count }));
+        }
+        calcBoxesBoundaries(response);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -76,7 +89,7 @@ const App = () => {
             <Logo size={100} />
             <Navigation handleUserChange={handleUserChange} />
           </header>
-          <Rank />
+          <Rank name={user.name} entries={user.entries} />
           <ImageLinkForm
             handleInputChange={handleInputChange}
             handleScan={handleScan}
