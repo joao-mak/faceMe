@@ -37,6 +37,8 @@ const App = () => {
 
   const handleUserChange = (user) => {
     setUser(user);
+    setInput('');
+    setBoxes([]);
   };
 
   const handleInputChange = (event) => {
@@ -52,11 +54,12 @@ const App = () => {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              id: user.id,
+              user_id: user.user_id,
             }),
           })
             .then((response) => response.json())
-            .then((count) => setUser({ ...user, entries: count }));
+            .then((count) => setUser({ ...user, entries: count }))
+            .catch((err) => console.log(err));
         }
         calcBoxesBoundaries(response);
       })
@@ -89,7 +92,7 @@ const App = () => {
             <Logo size={100} />
             <Navigation handleUserChange={handleUserChange} />
           </header>
-          <Rank name={user.name} entries={user.entries} />
+          <Rank name={user.user_name} entries={user.entries} />
           <ImageLinkForm
             handleInputChange={handleInputChange}
             handleScan={handleScan}
