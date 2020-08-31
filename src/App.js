@@ -50,12 +50,14 @@ const App = () => {
     })
       .then((response) => response.json())
       .then((response) => {
+        const numBoxes = response.outputs[0].data.regions.length;
         if (response) {
           fetch('http://localhost:3001/image', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               user_id: user.user_id,
+              numBoxes,
             }),
           })
             .then((response) => response.json())
