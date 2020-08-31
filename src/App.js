@@ -7,13 +7,8 @@ import ImageLinkForm from './components/ImageLinkForm';
 import FaceRec from './components/FaceRec';
 import Rank from './components/Rank';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 
 const App = () => {
-  const app = new Clarifai.App({
-    apiKey: 'e17fc639c24446d6a08a848de5fc0e54',
-  });
-
   const [input, setInput] = useState('');
 
   const [boxes, setBoxes] = useState([]);
@@ -46,8 +41,14 @@ const App = () => {
   };
 
   const handleScan = () => {
-    app.models
-      .predict(Clarifai.FACE_DETECT_MODEL, input)
+    fetch('http://localhost:3001/imageUrl', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        input,
+      }),
+    })
+      .then((response) => response.json())
       .then((response) => {
         if (response) {
           fetch('http://localhost:3001/image', {
