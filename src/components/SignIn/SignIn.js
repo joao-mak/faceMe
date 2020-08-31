@@ -9,6 +9,8 @@ const SignIn = (props) => {
 
   const [registered, setRegistered] = useState(false);
 
+  const baseDBURL = 'https://faceme-be.herokuapp.com';
+
   const handleRegister = (bool) => {
     setRegistered(bool);
   };
@@ -26,7 +28,7 @@ const SignIn = (props) => {
   };
 
   const onSignIn = () => {
-    fetch('http://localhost:3001/signin', {
+    fetch(`${baseDBURL}/signin`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -43,7 +45,7 @@ const SignIn = (props) => {
   };
 
   const onRegister = () => {
-    fetch('http://localhost:3001/register', {
+    fetch(`${baseDBURL}/register`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

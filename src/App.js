@@ -15,6 +15,8 @@ const App = () => {
 
   const [user, setUser] = useState(null);
 
+  const baseDBURL = 'https://faceme-be.herokuapp.com';
+
   const calcBoxesBoundaries = (response) => {
     const boxesData = response.outputs[0].data.regions;
     const image = document.getElementById('to-scan');
@@ -41,7 +43,7 @@ const App = () => {
   };
 
   const handleScan = () => {
-    fetch('http://localhost:3001/imageUrl', {
+    fetch(`${baseDBURL}/imageUrl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -52,7 +54,7 @@ const App = () => {
       .then((response) => {
         const numBoxes = response.outputs[0].data.regions.length;
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch(`${baseDBURL}/image`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
