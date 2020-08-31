@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "42b3684a5e7c94d4d13c90cc73533dd5",
+    "revision": "435ef722b3cbb795586a27a62841b5e6",
     "url": "/faceMe/index.html"
   },
   {
-    "revision": "4a33479b8322767652c4",
+    "revision": "4a37d2b9b42cead836ae",
     "url": "/faceMe/static/css/main.538668f6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/faceMe/static/js/2.b8e6ea34.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4a33479b8322767652c4",
-    "url": "/faceMe/static/js/main.08eea5aa.chunk.js"
+    "revision": "4a37d2b9b42cead836ae",
+    "url": "/faceMe/static/js/main.3d4506bb.chunk.js"
   },
   {
     "revision": "9569591566d4e04965ae",

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/faceMe/static/css/main.538668f6.chunk.css",
-    "main.js": "/faceMe/static/js/main.08eea5aa.chunk.js",
-    "main.js.map": "/faceMe/static/js/main.08eea5aa.chunk.js.map",
+    "main.js": "/faceMe/static/js/main.3d4506bb.chunk.js",
+    "main.js.map": "/faceMe/static/js/main.3d4506bb.chunk.js.map",
     "runtime-main.js": "/faceMe/static/js/runtime-main.c9aecd34.js",
     "runtime-main.js.map": "/faceMe/static/js/runtime-main.c9aecd34.js.map",
     "static/js/2.b8e6ea34.chunk.js": "/faceMe/static/js/2.b8e6ea34.chunk.js",
     "static/js/2.b8e6ea34.chunk.js.map": "/faceMe/static/js/2.b8e6ea34.chunk.js.map",
     "index.html": "/faceMe/index.html",
-    "precache-manifest.8bca2a2911dcd66b020d64d44c81fe1d.js": "/faceMe/precache-manifest.8bca2a2911dcd66b020d64d44c81fe1d.js",
+    "precache-manifest.5686c6bf110db88177c4a92e18f9fb69.js": "/faceMe/precache-manifest.5686c6bf110db88177c4a92e18f9fb69.js",
     "service-worker.js": "/faceMe/service-worker.js",
     "static/css/main.538668f6.chunk.css.map": "/faceMe/static/css/main.538668f6.chunk.css.map",
     "static/js/2.b8e6ea34.chunk.js.LICENSE.txt": "/faceMe/static/js/2.b8e6ea34.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c9aecd34.js",
     "static/js/2.b8e6ea34.chunk.js",
     "static/css/main.538668f6.chunk.css",
-    "static/js/main.08eea5aa.chunk.js"
+    "static/js/main.3d4506bb.chunk.js"
   ]
 }
